@@ -7,7 +7,7 @@ grant select, insert, delete, update, execute on StoreFront.* to 'phpWebEngine' 
 
 use StoreFront;
 
-CREATE TABLE User
+CREATE TABLE Users
 (
   UserId INTEGER UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   UserName VARCHAR NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE Orders
   ProductId INTEGER NOT NULL,
   Status VARCHAR NOT NULL
 
-  FOREIGN KEY (UserId) REFERENCES User(UserId) ON DELETE CASCADE,
+  FOREIGN KEY (UserId) REFERENCES Users(UserId) ON DELETE CASCADE,
   FOREIGN Key (ProductId) REFERENCES Products(ProductId) ON DELETE CASCADE
 )
 
@@ -46,6 +46,6 @@ CREATE TABLE Inventory
   UserId INTEGER NOT NULL,
   ProductId INTEGER NOT NULL,
 
-  FOREIGN KEY (UserId) REFERENCES User(UserId) ON DELETE CASCADE,
+  FOREIGN KEY (UserId) REFERENCES Users(UserId) ON DELETE CASCADE,
   FOREIGN Key (ProductId) REFERENCES Products(ProductId) ON DELETE CASCADE
 );
