@@ -1,4 +1,4 @@
-drop   database if exists     StoreFront;
+drop database if exists StoreFront;
 create database if not exists StoreFront;
 
 
@@ -12,6 +12,7 @@ CREATE TABLE User
   UserId INTEGER UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   UserName VARCHAR NOT NULL,
   Password VARCHAR NOT NULL,
+  Address VARCHAR,
   isStoreOwner BOOLEAN NOT NULL,
   StoreName VARCHAR,
 
@@ -22,7 +23,11 @@ CREATE TABLE Products
 (
   ProductId INTEGER UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   ProductName VARCHAR NOT NULL,
-  Description VARCHAR
+  Description VARCHAR,
+  Price FLOAT NOT NULL,
+  SKU VARCHAR,
+  Count INTEGER NOT NULL,
+  isActive BOOLEAN NOT NULL
 )
 
 CREATE TABLE Orders
@@ -30,6 +35,7 @@ CREATE TABLE Orders
   OrderId INTEGER NOT NULL AUTO_INCREMENT,
   UserId INTEGER NOT NULL,
   ProductId INTEGER NOT NULL,
+  Status VARCHAR NOT NULL
 
   FOREIGN KEY (UserId) REFERENCES User(UserId) ON DELETE CASCADE,
   FOREIGN Key (ProductId) REFERENCES Products(ProductId) ON DELETE CASCADE
@@ -37,10 +43,8 @@ CREATE TABLE Orders
 
 CREATE TABLE Inventory
 (
-  InvetoryId INTEGER NOT NULL AUTO_INCREMENT,
   UserId INTEGER NOT NULL,
   ProductId INTEGER NOT NULL,
-  isActive BOOLEAN NOT NULL,
 
   FOREIGN KEY (UserId) REFERENCES User(UserId) ON DELETE CASCADE,
   FOREIGN Key (ProductId) REFERENCES Products(ProductId) ON DELETE CASCADE
