@@ -3,13 +3,13 @@ create database if not exists StoreFront;
 
 
 drop user if exists 'phpWebEngine';
-grant select, insert, delete, update, execute on CSPS_431_HW3.* to 'phpWebEngine' identified by 'withheld';
+grant select, insert, delete, update, execute on StoreFront.* to 'phpWebEngine' identified by 'withheld';
 
 use StoreFront;
 
 CREATE TABLE User
 (
-  UserId INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  UserId INTEGER UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   UserName VARCHAR NOT NULL,
   Password VARCHAR NOT NULL,
   isStoreOwner BOOLEAN NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE User
 
 CREATE TABLE Products
 (
-  ProductId INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  ProductId INTEGER UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   ProductName VARCHAR NOT NULL,
   Description VARCHAR
 )
