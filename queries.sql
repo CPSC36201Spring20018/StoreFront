@@ -1,10 +1,12 @@
 USE StoreFront;
 
 select * from Users;
-delete from Users where UserName = 'test';
+delete from Users where UserName = '';
 
 select * from Products;
 delete from Products where ProductName = '';
+
+select * from Inventory;
 
 -- Insert new user normal user
 -- Values will be from create account form
@@ -22,11 +24,12 @@ VALUES ('TestStoreOwner','test','123 test st., test city, CA 12345',1,'test');
 
 -- Insert Product
 -- Values for Products insert will be from form
--- Values for Inventory
+-- Values for Inventory: UserId from session data and ProductId from LAST_INSERT_ID() function
+-- BOTH QUERIES NEED TO BE RUN RIGHT AFTER THE OTHER because of the LAST_INSERT_ID() function
 INSERT INTO Products (ProductName, Description, Price, SKU, Count, isActive)
 VALUES ('Pencil', 'This is litererally the best pencil ever made!', 99.99, '1234567890', 30, 1);
 
--- SET @productid := SELECT ProductId FROM Products GROUP BY ProductId DESC LIMIT 1;
-SELECT @last_id := LAST_INSERT_ID();
-
-INSERT INTO Inventory VALUES (5, 7);
+INSERT INTO Inventory (UserId, ProductId)
+SELECT UserId, ProductId
+FROM Users, Products
+WHERE UserId = 2 AND ProductId = LAST_INSERT_ID();
