@@ -7,6 +7,9 @@ select * from Products;
 delete from Products where ProductName = '';
 
 select * from Inventory;
+delete from Inventory where UserId = 2;
+
+select * from Orders;
 
 -- Insert new user normal user
 -- Values will be from create account form
@@ -22,7 +25,7 @@ select * from Users where UserName = 'TestStoreOwner';
 INSERT INTO Users (UserName, Password, Address, isStoreOwner, StoreName)
 VALUES ('TestStoreOwner','test','123 test st., test city, CA 12345',1,'test');
 
--- Insert Product
+-- Inserting a Product
 -- Values for Products insert will be from form
 -- Values for Inventory: UserId from session data and ProductId from LAST_INSERT_ID() function
 -- BOTH QUERIES NEED TO BE RUN RIGHT AFTER THE OTHER because of the LAST_INSERT_ID() function
@@ -33,3 +36,12 @@ INSERT INTO Inventory (UserId, ProductId)
 SELECT UserId, ProductId
 FROM Users, Products
 WHERE UserId = 2 AND ProductId = LAST_INSERT_ID();
+
+-- Buying a Product
+-- UserId from session data
+-- ProductId from POST data on purchase event
+-- Status is by default ordered when first purchased based on DDL contraint
+INSERT INTO Orders (UserId, ProductId)
+Select UserId, ProductId
+FROM Users, Products
+WHERE UserId = 1 AND ProductId = 1;
