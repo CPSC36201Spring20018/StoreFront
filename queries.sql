@@ -2,7 +2,7 @@ USE StoreFront;
 
 -- These are just for my testing to view and modify tables
 select * from Users;
-delete from Users where UserName = '';
+delete from Users where UserName = 'StoreOwner3';
 
 select * from Products;
 delete from Products where ProductName = '';
@@ -61,9 +61,8 @@ SELECT
 	as PID,
 (SELECT Users.UserId
 	FROM Users LEFT JOIN Inventory
-	ON Inventory.UserId
-	WHERE ProductId = 2
-	GROUP BY ProductId)
+	ON Inventory.UserId = Users.UserId
+	WHERE ProductId = 2)
 	as UID;
 UPDATE Products
 	SET Count = (Count - 1)
@@ -84,19 +83,20 @@ SET
 WHERE
 	ProductId = 1;
 
--- View Orders for Store Owner IN PROGRESS
+-- View Orders for Store Owner
 -- StoreOwnerId from session data when a store owner logs in
 Select
+	Orders.StoreOwnerId,
 	Orders.OrderId,
-  Orders.Status,
-  Products.ProductName,
-  Products.Price,
-  Products.Description
+    Orders.Status,
+    Products.ProductName,
+    Products.Price,
+    Products.Description
 FROM
 	Orders
 LEFT JOIN
 	Products
 ON
-	Orders.ProductId = Orders.ProductId
+	Orders.ProductId = Products.ProductId
 WHERE
-	ßOrders.StoreOwnerId = 2;
+	StoreOwnerId = 2;
