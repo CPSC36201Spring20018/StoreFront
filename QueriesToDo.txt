@@ -3,7 +3,7 @@ Store Owner
   Add Product - DONE
   Modify Product  - DONE
   Deactivate Product - DONE included in modify product
-  View Order
+  View Orders --DONE
     Based off of orderid show orderid, product, price, status
   View Inventory
   Increase/Decrease Product Count

@@ -94,7 +94,7 @@ Select
   Products.Description
 FROM
 	Orders
-RIGHT JOIN
+LEFT JOIN
 	Products
 ON
 	Orders.ProductId = Orders.ProductId
