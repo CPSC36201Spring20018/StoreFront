@@ -20,10 +20,10 @@ CREATE TABLE Users
 INSERT INTO
 	Users (UserName, Password, StoreName)
 VALUES
-	('StoreOwner1','test1', '1'),
-	('StoreOwner2','test2', '2'),
-	('StoreOwner3','test3', '3'),
-	('StoreOwner4','test4', '3');
+	('StoreOwner1','test1', 'StoreName1'),
+	('StoreOwner2','test2', 'StoreName2'),
+	('StoreOwner3','test3', 'StoreName3'),
+	('StoreOwner4','test4', 'StoreName4');
 
 CREATE TABLE Products
 (
@@ -76,13 +76,3 @@ VALUES
   (3, 6, 'First3', 'Last3', '3 test cir, test town, CA 12345'),
   (4, 7, 'First4', 'Last4', '4 test cir, test town, CA 12345'),
   (4, 8, 'First4', 'Last4', '4 test cir, test town, CA 12345');
-
-
--- CREATE TABLE Inventory
--- (
---   UserId INTEGER UNSIGNED NOT NULL,
---   ProductId INTEGER UNSIGNED NOT NULL,
---
---   FOREIGN KEY (UserId) REFERENCES Users(UserId) ON DELETE CASCADE,
---   FOREIGN Key (ProductId) REFERENCES Products(ProductId) ON DELETE CASCADE
--- );
