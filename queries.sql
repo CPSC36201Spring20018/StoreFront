@@ -85,4 +85,18 @@ WHERE
 	ProductId = 1;
 
 -- View Orders for Store Owner IN PROGRESS
-(Select * FROM Orders ) UNION (SELECT * FROM Inventory);
+-- StoreOwnerId from session data when a store owner logs in
+Select
+	Orders.OrderId,
+  Orders.Status,
+  Products.ProductName,
+  Products.Price,
+  Products.Description
+FROM
+	Orders
+RIGHT JOIN
+	Products
+ON
+	Orders.ProductId = Orders.ProductId
+WHERE
+	ßOrders.StoreOwnerId = 2;
