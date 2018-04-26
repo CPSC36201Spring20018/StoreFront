@@ -42,7 +42,7 @@
 
           <?php //get all the products of this storefront and add Buy buttons for purchasing them
             $query = "SELECT Products.ProductId, products.ProductName, products.Description,
-            products.Price, products.SKU, products.Count FROM products WHERE products.UserId = 1 AND products.isActive = 1;";
+            products.Price, products.SKU, products.Count FROM products WHERE products.UserId =".$storeID."  AND products.isActive = 1;";
 
             $stmt = $db->prepare($query);
 
