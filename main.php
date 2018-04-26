@@ -62,7 +62,7 @@
                       echo "<tr>";
 
                       echo "<td>".$storeName."</td>";
-                      echo "<td width=\"100px\"><button><a href=\"store.php?nid=".$storeName."\">Visit Store</a></button></td>";
+                      echo "<td width=\"100px\"><button><a href=\"store.php?nid=".$sid."\">Visit Store</a></button></td>";
                     }
 
                   $db->close();

@@ -42,7 +42,7 @@
 
           <?php //get all the products of this storefront and add Buy buttons for purchasing them
             $query = "SELECT Products.ProductId, products.ProductName, products.Description,
-            products.Price, products.SKU FROM products WHERE products.UserId = 1 AND products.isActive = 1 AND products.Count > 0;";
+            products.Price, products.SKU, products.Count FROM products WHERE products.UserId = 1 AND products.isActive = 1;";
 
             $stmt = $db->prepare($query);
 
@@ -50,7 +50,7 @@
 
             $stmt->store_result();
 
-            $stmt->bind_result($pnum, $pname, $pdesc, $pprice, $psku);
+            $stmt->bind_result($pnum, $pname, $pdesc, $pprice, $psku, $pcount);
 
           ?>
 
@@ -76,6 +76,7 @@
                     $prodesc = $pdesc;
                     $proprice = $pprice;
                     $prosku = $psku;
+                    $procount = $pcount;
                     // $sid = $uid; //userid used for get for store to load the items
 
                     echo "<tr>";
@@ -85,7 +86,14 @@
                     echo "<td>".$prodesc."</td>";
                     echo "<td>".$prosku."</td>";
                     echo "<td>$".$proprice."</td>";
-                    echo "<td width=\"100px\"><button><a href=\"buy.php?proid=".$prosku."&sid=".$storeID."\">Purchase</a></button></td>";
+
+                    if($pcount != 0){
+                      echo "<td width=\"100px\"><button><a href=\"buy.php?proid=".$pronum."&sid=".$storeID."\">Purchase</a></button></td>";
+                    }else{
+                      echo "<td width=\"100px\"><button diabled><a href=\"buy.php?proid=".$pronum."&sid=".$storeID."\">Purchase</a></button></td>";
+                    }
+
+
 
                     echo "</tr>";
                   }
