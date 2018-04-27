@@ -24,7 +24,7 @@
         $storeId = htmlspecialchars($_GET["sid"]);
         //echo $storeID;
 
-        $query = "SELECT Products.ProductName, Products.Price, Products.SKU, Users.StoreName from Products LEFT JOIN Users ON products.UserId = Users.UserId WHERE Products.productId =".$productId.";";
+        $query = "SELECT Products.ProductName, Products.Price, Products.SKU, Users.StoreName, Products.ProductId, Products.UserId from Products LEFT JOIN Users ON products.UserId = Users.UserId WHERE Products.productId =".$productId.";";
 
         $stmt = $db->prepare($query);
 
@@ -32,7 +32,7 @@
 
         $stmt->store_result();
 
-        $stmt->bind_result($pname, $pprice, $psku, $storenme);
+        $stmt->bind_result($pname, $pprice, $psku, $storenme, $pid, $uid);
 
         $stmt->fetch(); // gets the result
 
@@ -65,27 +65,19 @@
                     <input class="form-control" name="cust_lname" />
                 </div>
                 <div class="form-group">
-                    <label for="cust_address">City</label>
+                    <label for="cust_address">Address (Full)</label>
                     <input class="form-control" name="cust_address" />
                 </div>
-                <!-- <div class="form-group">
-                    <label for="player_league">League</label>
-                    < <select class="form-control">
-                        <option value=1>NBA</option>
-                        <option value=2>MLB</option>
-                        <option value=3>NHL</option>
-                    </select>
-                </div> -->
-                <!-- <div class="form-group">
-                    <label for="player_team">Team</label>
-                    <select class="form-control" name = "player_team">
-                        <option value=1>Los Angeles Lakers</option>
-                        <option value=2>Boston Celtics</option>
-                        <option value=3>Golden State Warriors</option>
-                    </select>
+                <?php
+                  $stmt->data_seek(0);
+                  $stmt->fetch(); // gets the result
+                  //echo "<input type = \"hidden\" name = \"p_name\" value =\"".$pname."\">";
+                  echo "<input type = \"hidden\"  name = \"p_price\" value=\"".$pprice."\">";
+                  echo "<input type = \"hidden\"  name = \"p_id\" value=\"".$pid."\">";
+                  echo "<input type = \"hidden\"  name = \"p_uid\" value=\"".$uid."\">";
+                  echo "<input type = \"hidden\"  name = \"p_name\" value=\"".$pname."\">";
+                ?>
 
-
-                </div> -->
                 <input class="form-control" type="Submit" value="Submit Purchase" />
             </form>
 
