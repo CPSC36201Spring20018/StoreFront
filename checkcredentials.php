@@ -27,6 +27,7 @@ if ($login_name==null) {        //IF QUERY DID NOT RETURN ANYTHING
 }
 else {
   $_SESSION['STORE_ID'] = $login_ID;
+  $_SESSION['STORE_NAME'] = $username;
   header("Location: http://localhost/362/storeLanding.php");
   exit;
 }

@@ -5,7 +5,7 @@ $username     = trim( preg_replace("/\t|\R/",' ',$_POST['username'])  );
 $password        = trim( preg_replace("/\t|\R/",' ',$_POST['password'])    );
 
 $db = new mysqli('localhost','root','','storefront');
-
+  //Add Store Owner information from accoutCreate.php to database
   if( mysqli_connect_error() == 0 ){
     $query = "INSERT INTO Users SET
                 UserName = ?,
@@ -18,6 +18,7 @@ $db = new mysqli('localhost','root','','storefront');
   }
 
 if( mysqli_connect_error() == 0 ){
+  //Grab userID from database for later use
   $query = "SELECT
             UserId
             FROM users Where
@@ -27,6 +28,7 @@ if( mysqli_connect_error() == 0 ){
   $row = mysqli_fetch_array($result);
 
   $salt = $row[0];
+  //store userID to session 
   $_SESSION['STORE_ID'] = $salt;
 }
 
