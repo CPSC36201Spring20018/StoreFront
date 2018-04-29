@@ -13,7 +13,7 @@ $db = new mysqli('localhost','root','','storefront');
     $query = "SELECT Orders.ProductId, Orders.Status,
                      Orders.FirstName, Orders.LastName,
                      Orders.Address FROM orders WHERE
-                  ProductID = '$ID'";
+                  UserID = '$ID'";
 
     $stmt = $db->prepare($query);
     $stmt->execute();
@@ -24,20 +24,38 @@ $db = new mysqli('localhost','root','','storefront');
 ?>
 <h1>Orders List</h1>
 
-<?php
-$stmt->data_seek(0);
-while ($stmt->fetch()) {
-  $input = "                             ";
-  $ProIDView = $prod;
-  $StatusView = $stat;
-  $FirstNameView = $first;
-  $LastNameView = $last;
-  $AddressView = $address;
+<table class="table">
+    <thead>
+        <tr>
+            <th>Products ID</th>
+            <th>Status</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Address</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+      <?php
+        //$count = 1;
+        $stmt->data_seek(0); //
+        while($stmt->fetch()){
+          $pronum = $prod;
+          $pstatus = $stat;
+          $pfirst = $first;
+          $plast = $last;
+          $paddress = $address;
 
-
-
-
-  echo "Product ID:  " . str_pad($input, 10) . $ProIDView . str_pad($input, 10) . "Status:  " . $StatusView . str_pad($input, 10) ."Customer Name:  ". $FirstNameView . $LastNameView . str_pad($input, 10) . "Address:  " . $AddressView;
-}
-
-?>
+          // $sid = $uid; //userid used for get for store to load the items
+          echo "<tr>";
+          echo "<td>".$pronum."</td>";
+          echo "<td>".$pstatus."</td>";
+          echo "<td>".$pfirst."</td>";
+          echo "<td>".$plast."</td>";
+          echo "<td>".$paddress."</td>";
+          echo "</tr>";
+        }
+      $db->close();
+      ?>
+    </tbody>
+</table>

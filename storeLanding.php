@@ -1,7 +1,7 @@
 <?php
 session_start();
 
- $ID = $_SESSION['STORE_ID'];
+$ID = $_SESSION['STORE_ID'];
 $store_name = $_SESSION['STORE_NAME'];
 
 
@@ -15,7 +15,6 @@ $store_name = $_SESSION['STORE_NAME'];
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 </head>
 <body>
-<h1>Store Front Homepage</h1>
 <h2>Welcome <?php echo $store_name; ?> </2>
 
   <body>
@@ -32,11 +31,11 @@ $store_name = $_SESSION['STORE_NAME'];
          die();
        }
            $query = "SELECT Products.ProductId, products.ProductName, products.Description,
-           products.Price, products.SKU, products.Count FROM products WHERE products.UserId =$ID;";
+           products.Price, products.SKU, products.Count, products.isActive FROM products WHERE products.UserId =$ID;";
            $stmt = $db->prepare($query);
            $stmt->execute();
            $stmt->store_result();
-           $stmt->bind_result($pnum, $pname, $pdesc, $pprice, $psku, $pcount);
+           $stmt->bind_result($pnum, $pname, $pdesc, $pprice, $psku, $pcount, $pactive);
          ?>
 
          <table class="table">
@@ -61,6 +60,7 @@ $store_name = $_SESSION['STORE_NAME'];
                    $proprice = $pprice;
                    $prosku = $psku;
                    $procount = $pcount;
+                   $proactive = $pactive;
                    // $sid = $uid; //userid used for get for store to load the items
                    echo "<tr>";
                    echo "<td>".$pronum."</td>";
@@ -69,7 +69,12 @@ $store_name = $_SESSION['STORE_NAME'];
                    echo "<td>".$prosku."</td>";
                    echo "<td>$".$proprice."</td>";
                    echo "<td width=\"100px\"><button><a href=\"modifyproduct.php?proid=".$pronum."\">Modify</a></button></td>";
-
+                   if ($proactive == 0) {
+                      echo "<td width=\"100px\"><button><a href=\"changeActive.php?active=".$proactive."&proid=".$pronum."\">Activate</a></button></td>";
+                   }
+                   else{
+                   echo "<td width=\"100px\"><button><a href=\"changeActive.php?active=".$proactive."&proid=".$pronum."\">Deactivate</a></button></td>";
+                  }
                    echo "</tr>";
                  }
                $db->close();
