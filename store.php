@@ -90,7 +90,7 @@
                     if($pcount != 0){
                       echo "<td width=\"100px\"><button><a href=\"buy.php?proid=".$pronum."&sid=".$storeID."\">Purchase</a></button></td>";
                     }else{
-                      echo "<td width=\"100px\"><button diabled><a href=\"buy.php?proid=".$pronum."&sid=".$storeID."\">SOLD OUT</a></button></td>";
+                      echo "<td width=\"100px\"><button diabled>SOLD OUT</button></td>";
                     }
 
 
