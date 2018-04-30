@@ -8,10 +8,13 @@ $price       = trim( preg_replace("/\t|\R/",' ',$_POST['price'])    );
 $sku     = trim( preg_replace("/\t|\R/",' ',$_POST['skunumber']) );
 $quantity    = trim( preg_replace("/\t|\R/",' ',$_POST['quantity'])  );
 
-$db = new mysqli('localhost','root','','storefront');
+require_once("dbConnect.php");
+
+//get the db
+$db = new mysqli(dbHost, dbUsername, dbPassword, dbName);
   //Add Store Owner information from accoutCreate.php to database
   if( mysqli_connect_error() == 0 ){
-    $query = "UPDATE products SET
+    $query = "UPDATE Products SET
 	             ProductName = ?,
 	             Description = ?,
 	             Price = ?,
