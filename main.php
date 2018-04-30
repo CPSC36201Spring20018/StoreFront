@@ -14,6 +14,7 @@
         ?>
         <div class="container">
             <h2> Stores to shop </h2>
+            <input type="submit" onclick="location.href='login.php'" value="Create Account/Store" style="float: right;">
             <?php
             // get credentials
             require_once("dbConnect.php");

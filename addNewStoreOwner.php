@@ -4,7 +4,11 @@ $storeName     = trim( preg_replace("/\t|\R/",' ',$_POST['store_name']) );
 $username     = trim( preg_replace("/\t|\R/",' ',$_POST['username'])  );
 $password        = trim( preg_replace("/\t|\R/",' ',$_POST['password'])    );
 
-$db = new mysqli('localhost','root','','storefront');
+// get credentials
+require_once("dbConnect.php");
+
+//get the db
+$db = new mysqli(dbHost, dbUsername, dbPassword, dbName);
   //Add Store Owner information from accoutCreate.php to database
   if( mysqli_connect_error() == 0 ){
     $query = "INSERT INTO Users SET
@@ -21,7 +25,7 @@ if( mysqli_connect_error() == 0 ){
   //Grab userID from database for later use
   $query = "SELECT
             UserId
-            FROM users Where
+            FROM Users Where
               UserName = '$username'";
 
   $result = mysqli_query($db,$query);

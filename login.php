@@ -24,6 +24,7 @@
 <br>
 <input type ="submit" name = "logPage" value = "Login">
 </form>
+<input type="submit" onclick="location.href='accountCre.php'" value="Create Account/Store">
 
 
 </body>
