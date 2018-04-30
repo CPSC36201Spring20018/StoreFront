@@ -30,4 +30,7 @@ $db = new mysqli(dbHost, dbUsername, dbPassword, dbName);
     $stmt->execute();
   }
 echo $product . " has been uploaded";
+
 ?>
+
+<input type="submit" onclick="location.href='.storeLanding.php'" value="Create Account/Store">
