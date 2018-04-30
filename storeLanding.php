@@ -23,15 +23,19 @@ $store_name = $_SESSION['STORE_NAME'];
 
 
          <?php //get all the products of this storefront and add Buy buttons for purchasing them
-         $db = new mysqli('localhost', 'root', '', 'StoreFront');
+         // get credentials
+         require_once("dbConnect.php");
+
+         //get the db
+         $db = new mysqli(dbHost, dbUsername, dbPassword, dbName);
        //if unable to connect to the db
        if(mysqli_connect_errno()){
          echo '<p>Error: Could not connect to Database.<br/>
          Please Try again later </p>';
          die();
        }
-           $query = "SELECT Products.ProductId, products.ProductName, products.Description,
-           products.Price, products.SKU, products.Count, products.isActive FROM products WHERE products.UserId =$ID;";
+           $query = "SELECT Products.ProductId, Products.ProductName, Products.Description,
+           Products.Price, Products.SKU, Products.Count, Products.isActive FROM Products WHERE Products.UserId =$ID;";
            $stmt = $db->prepare($query);
            $stmt->execute();
            $stmt->store_result();

@@ -9,7 +9,11 @@ $sku     = trim( preg_replace("/\t|\R/",' ',$_POST['skunumber']) );
 $quantity    = trim( preg_replace("/\t|\R/",' ',$_POST['quantity'])  );
 $avail       = trim( preg_replace("/\t|\R/",' ',$_POST['status'])    );
 
-$db = new mysqli('localhost','root','','storefront');
+// get credentials
+require_once("dbConnect.php");
+
+//get the db
+$db = new mysqli(dbHost, dbUsername, dbPassword, dbName);
   //Add Store Owner information from accoutCreate.php to database
   if( mysqli_connect_error() == 0 ){
     $query = "INSERT INTO Products SET

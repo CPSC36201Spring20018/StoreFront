@@ -19,7 +19,11 @@ $productname = preg_replace("/\t\R/", ' ', $_POST['p_name']);
 //adds the address to the mysql db
 
 //open the db
-$db = new mysqli('localhost', 'root', '', 'StoreFront');
+// get credentials
+require_once("dbConnect.php");
+
+//get the db
+$db = new mysqli(dbHost, dbUsername, dbPassword, dbName);
 
 //if did not successfully open db
 if (mysqli_connect_errno()){

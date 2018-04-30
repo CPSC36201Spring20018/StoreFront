@@ -8,11 +8,15 @@
 session_start();
 $ID = $_SESSION['STORE_ID'];
 
-$db = new mysqli('localhost','root','','storefront');
+// get credentials
+require_once("dbConnect.php");
+
+//get the db
+$db = new mysqli(dbHost, dbUsername, dbPassword, dbName);
   if( mysqli_connect_error() == 0 ){
     $query = "SELECT Orders.ProductId, Orders.Status,
                      Orders.FirstName, Orders.LastName,
-                     Orders.Address FROM orders WHERE
+                     Orders.Address FROM Orders WHERE
                   UserID = '$ID'";
 
     $stmt = $db->prepare($query);

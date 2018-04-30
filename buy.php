@@ -10,7 +10,11 @@
     <body>
       <div class = "container">
       <?php
-        $db = new mysqli('localhost', 'root', '', 'StoreFront');
+      // get credentials
+      require_once("dbConnect.php");
+
+      //get the db
+      $db = new mysqli(dbHost, dbUsername, dbPassword, dbName);;
 
         //if unable to connect to the db
         if(mysqli_connect_errno()){
@@ -24,7 +28,7 @@
         $storeId = htmlspecialchars($_GET["sid"]);
         //echo $storeID;
 
-        $query = "SELECT Products.ProductName, Products.Price, Products.SKU, Users.StoreName, Products.ProductId, Products.UserId from Products LEFT JOIN Users ON products.UserId = Users.UserId WHERE Products.productId =".$productId.";";
+        $query = "SELECT Products.ProductName, Products.Price, Products.SKU, Users.StoreName, Products.ProductId, Products.UserId from Products LEFT JOIN Users ON Products.UserId = Users.UserId WHERE Products.productId =".$productId.";";
 
         $stmt = $db->prepare($query);
 
@@ -82,8 +86,8 @@
             </form>
 
           <?php //get all the products of this storefront and add Buy buttons for purchasing them
-          //   $query = "SELECT Products.ProductId, products.ProductName, products.Description,
-          //   products.Price, products.SKU, products.Count FROM products WHERE products.UserId = 1 AND products.isActive = 1;";
+          //   $query = "SELECT Products.ProductId, Products.ProductName, Products.Description,
+          //   Products.Price, Products.SKU, Products.Count FROM products WHERE Products.UserId = 1 AND Products.isActive = 1;";
           //
           //   $stmt = $db->prepare($query);
           //

@@ -15,9 +15,12 @@
         <div class="container">
             <h2> Stores to shop </h2>
             <?php
+            // get credentials
+            require_once("dbConnect.php");
 
             //get the db
-            $db = new mysqli('localhost', 'root', '', 'StoreFront');
+            $db = new mysqli(dbHost, dbUsername, dbPassword, dbName);
+            //$db = new mysqli('localhost', 'root', 'Eagles79!', 'StoreFront');
 
             //if unable to connect to the db
             if(mysqli_connect_errno()){

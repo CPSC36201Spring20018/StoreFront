@@ -3,11 +3,14 @@ session_start();
 $productID = htmlspecialchars($_GET["proid"]);
 $_SESSION['PRODUCT_ID'] = $productID;
 
-$db = new mysqli('localhost','root','','storefront');
+require_once("dbConnect.php");
+
+//get the db
+$db = new mysqli(dbHost, dbUsername, dbPassword, dbName);
   //Add Store Owner information from accoutCreate.php to database
   if( mysqli_connect_error() == 0 ){
-    $query = "SELECT Products.ProductId, products.ProductName, products.Description,
-    products.Price, products.SKU, products.Count FROM products WHERE products.ProductId =$productID;";
+    $query = "SELECT Products.ProductId, Products.ProductName, Products.Description,
+    Products.Price, Products.SKU, Products.Count FROM Products WHERE Products.ProductId =$productID;";
 
     $stmt = $db->prepare($query);
     $stmt->execute();
