@@ -26,13 +26,13 @@ if( mysqli_connect_error() == 0 ){
 }
 if ($login_name==null) {        //IF QUERY DID NOT RETURN ANYTHING
                           //ACCOUNT DOES NOT EXIST, RETURN TO LOGIN PAGE
-  header("Location: http://localhost/login.php");
+  header("Location:login.php");
   exit;
 }
 else {
   $_SESSION['STORE_ID'] = $login_ID;
   $_SESSION['STORE_NAME'] = $username;
-  header("Location: http://localhost/storeLanding.php");
+  header("Location:storeLanding.php");
   exit;
 }
 

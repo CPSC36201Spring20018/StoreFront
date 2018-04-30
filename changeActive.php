@@ -25,6 +25,6 @@
   echo $isActiveId;
   $stmt->bind_param('ss',$isActiveId, $productId);
   $stmt->execute();
-  header("Location: http://localhost/storeLanding.php");
+  header("Location:storeLanding.php");
   exit;
   ?>

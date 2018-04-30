@@ -3,8 +3,6 @@ session_start();
 
 $ID = $_SESSION['STORE_ID'];
 $store_name = $_SESSION['STORE_NAME'];
-
-
 ?>
 
 <html>
