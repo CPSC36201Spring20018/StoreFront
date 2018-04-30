@@ -58,15 +58,15 @@
           <form action = "confirmPurchase.php" method = "post">
                 <div class="form-group">
                     <label for="cust_fname">First Name</label>
-                    <input class="form-control" name="cust_fname" />
+                    <input class="form-control" name="cust_fname" required = "required" />
                 </div>
                 <div class="form-group">
                     <label for="cust_lname">Last Name</label>
-                    <input class="form-control" name="cust_lname" />
+                    <input class="form-control" name="cust_lname" required = "required" />
                 </div>
                 <div class="form-group">
                     <label for="cust_address">Address (Full)</label>
-                    <input class="form-control" name="cust_address" />
+                    <input class="form-control" name="cust_address" required = "required"/>
                 </div>
                 <?php
                   $stmt->data_seek(0);
