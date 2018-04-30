@@ -73,10 +73,10 @@ $store_name = $_SESSION['STORE_NAME'];
                    echo "<td>".$proquant."</td>";
                    echo "<td width=\"100px\"><button><a href=\"modifyproduct.php?proid=".$pronum."\">Modify</a></button></td>";
                    if ($proactive == 0) {
-                      echo "<td width=\"100px\"><button><a href=\"changeActive.php?active=".$proactive."&proid=".$pronum."\">Activate</a></button></td>";
+                      echo "<td width=\"100px\"><button style =\"background-color:red; box-shadow: 1px 1px;\"><a href=\"changeActive.php?active=".$proactive."&proid=".$pronum."\" style =\"color: white\">Deactive</a></button></td>";
                    }
                    else{
-                   echo "<td width=\"100px\"><button><a href=\"changeActive.php?active=".$proactive."&proid=".$pronum."\">Deactivate</a></button></td>";
+                   echo "<td width=\"100px\"><button style =\"background-color:green; box-shadow: 1px 1px;\"><a href=\"changeActive.php?active=".$proactive."&proid=".$pronum."\" style =\"color: white\">Active</a></button></td>";
                   }
                    echo "</tr>";
                  }
