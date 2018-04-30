@@ -97,5 +97,9 @@ $store_name = $_SESSION['STORE_NAME'];
   <input type = "submit" name = "addproduct" value = "Add New Product">
 </form>
 
+<form action="logout.php" method="post">
+  <input type = "submit" name = "logout" value ="Log Out">
+</form>
+
 </body>
 </html>
