@@ -9,4 +9,4 @@ CPSC 362
 * Cameron McPhie
 
 DESCRIPTION
-This is an inventory management/storefront for an online marketplace, where storeowners are able to create an account and manage their inventory and orders.
+  This is an inventory management/storefront for an online marketplace, where storeowners are able to create an account and manage their inventory and orders.
