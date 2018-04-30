@@ -24,6 +24,6 @@ $db = new mysqli('localhost','root','','storefront');
     $stmt->bind_param('ssssss', $product, $desc, $price, $sku, $quantity, $productID);
     $stmt->execute();
   }
-  header("Location: http://localhost/362/storeLanding.php");
+  header("Location: http://localhost/storeLanding.php");
   exit;
 ?>

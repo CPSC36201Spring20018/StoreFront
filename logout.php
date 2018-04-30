@@ -2,6 +2,6 @@
 session_start();
 session_destroy();
 
-  header("Location: http://localhost/362/main.php");
+  header("Location: http://localhost/main.php");
   exit;
   ?>

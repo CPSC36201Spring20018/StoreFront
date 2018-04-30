@@ -28,10 +28,10 @@ if( mysqli_connect_error() == 0 ){
   $row = mysqli_fetch_array($result);
 
   $salt = $row[0];
-  //store userID to session 
+  //store userID to session
   $_SESSION['STORE_ID'] = $salt;
 }
 
-header("Location: http://localhost/362/storeLanding.php");
+header("Location: http://localhost/storeLanding.php");
 exit;
 ?>
