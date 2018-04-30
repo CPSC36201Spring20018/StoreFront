@@ -46,6 +46,7 @@ $store_name = $_SESSION['STORE_NAME'];
                      <th>Product Description</th>
                      <th>Product Sku</th>
                      <th>Product Price</th>
+                     <th>Quantity</th>
                      <th></th>
                  </tr>
              </thead>
@@ -61,6 +62,7 @@ $store_name = $_SESSION['STORE_NAME'];
                    $prosku = $psku;
                    $procount = $pcount;
                    $proactive = $pactive;
+                   $proquant = $pcount;
                    // $sid = $uid; //userid used for get for store to load the items
                    echo "<tr>";
                    echo "<td>".$pronum."</td>";
@@ -68,6 +70,7 @@ $store_name = $_SESSION['STORE_NAME'];
                    echo "<td>".$prodesc."</td>";
                    echo "<td>".$prosku."</td>";
                    echo "<td>$".$proprice."</td>";
+                   echo "<td>".$proquant."</td>";
                    echo "<td width=\"100px\"><button><a href=\"modifyproduct.php?proid=".$pronum."\">Modify</a></button></td>";
                    if ($proactive == 0) {
                       echo "<td width=\"100px\"><button><a href=\"changeActive.php?active=".$proactive."&proid=".$pronum."\">Activate</a></button></td>";
