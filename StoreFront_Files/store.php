@@ -42,6 +42,7 @@
         echo "<h2>".$storeName."</h2>"; //outputs the name of the store
       ?>
         <div class = "container">
+            <input type="submit" onclick="location.href='main.php'" value="Go Back to Main" style="float: right;">
 
 
           <?php //get all the products of this storefront and add Buy buttons for purchasing them

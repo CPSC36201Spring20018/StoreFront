@@ -85,19 +85,9 @@
                 <input class="form-control" type="Submit" value="Submit Purchase" />
             </form>
 
-          <?php //get all the products of this storefront and add Buy buttons for purchasing them
-          //   $query = "SELECT Products.ProductId, Products.ProductName, Products.Description,
-          //   Products.Price, Products.SKU, Products.Count FROM products WHERE Products.UserId = 1 AND Products.isActive = 1;";
-          //
-          //   $stmt = $db->prepare($query);
-          //
-          //   $stmt->execute();
-          //
-          //   $stmt->store_result();
-          //
-          //   $stmt->bind_result($pnum, $pname, $pdesc, $pprice, $psku, $pcount);
-          //
-          // ?>
+          <?php
+          echo "<input type=\"submit\" onclick=\"location.href='store.php?nid=".$storeId."'\" value=\"Cancel\" style=\"float: left;\">";
+          ?>
 
           <!-- <table class="table">
               <thead>
