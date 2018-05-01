@@ -63,3 +63,4 @@ $db = new mysqli(dbHost, dbUsername, dbPassword, dbName);
       ?>
     </tbody>
 </table>
+<input type="submit" onclick="location.href='storeLanding.php'" value="Return to Home">
